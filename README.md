@@ -621,3 +621,4 @@ IndexOutOfRangeException|An index is outside the bounds of an array or collectio
 InvalidOperationException|A method call is invalid in an object's current state. 
 KeyNotFoundException|The specified key for accessing a member in a collection cannot be found. 
 NotImplementedException|A method 
+#นายบุญฤทธิ์  หอมรื่น รหัสนักศึกษา 57030185
