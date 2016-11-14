@@ -50,6 +50,8 @@ Line 5
 Line 2
 Line 9
 ```
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_1.png?raw=true)
+
 ###1.1.2. try…catch…finally
 ประโยค ```try…catch…finally``` ใช้สำหรับการดักจับและจัดการข้อผิดพลาดของโปรแกรม ทั้งขณะทำงาน (Run Time Process) หรือในขณะเริ่มต้นทำงาน (Init Process) โดยเราจะวางคำสั่งที่คาดการว่าจะเกิดข้อผิดพลาดขึ้นไว้ในบล็อกของ ```Try``` และวางส่วนจัดการข้อผิดพลาดไว้ในบล็อกของ ```catch``` และถ้ามีการดำเนินการใดๆ ที่ต้องทำทั้งในกรณีที่มีและไม่มีข้อผิดพลาด ก็จะใส่ไว้ในบล็อกของ ```Finally``` ในคำสั่งนี้สามารถเขียนบล็อกของ ```catch``` ได้หลายบล็อก คำสั่งนี้มีประโยชน์มากในการทำงานกับระบบอินเตอร์เน็ต โดยเฉพาะในกรณีที่การเชื่อมต่อไม่เสถียร เพราะจะช่วยป้องกันการค้างของโปรแกรมของเราขณะเรียกข้อมูลจาก network ได้
 **ตัวอย่าง** โปรแกรมที่ไม่ได้ใช้คำสั่ง ```try…catch…finally```
@@ -143,6 +145,10 @@ public class TryCatch
      }
  }
 ```
+```
+รันได้ปกติ ไม่มีข้อผิดพลาด
+```
+
 ###2.
 ``` csharp
 using System;
@@ -157,6 +163,32 @@ public class TryCatch
      }
  }
 ```
+####Code 
+```
+using System;
+public class Trycatch
+{
+    static void Main(string[] args)
+    {
+        object LAB8 = null;
+        try
+        {
+            int a = 0;
+            int b = 10;
+            b /= a;
+            Console.WriteLine(a);
+        }
+        catch (DivideByZeroException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+
+```
+
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_2.png?raw=true)
+
 ###3.
 ``` csharp
 using System;
@@ -173,6 +205,31 @@ public class TryCatch
      }
  }
 ```
+####Code
+```
+using System;
+public class Trycatch
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            int value = 800000000;
+            checked // check for overflow
+            {
+                int square = value * value;
+                Console.WriteLine("{0} ^ 2 = {1}", value, square);
+            }
+        }
+        catch (OverflowException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+```
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_3.png?raw=true)
+
 ###1.1.3. คำสั่ง ```throw```
 
 คำสั่ง ```throw``` ใช้เพื่อเปลี่ยนเส้นทางการทำงานของโปรแกรมโดยเจาะจง exception เป้าหมาย
@@ -242,6 +299,15 @@ public class ExceptionLearning
     }
  }
 ````
+####1.  DivideByZeroException
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_15.png?raw=true)
+####2.	NullReferenceException
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_4.png?raw=true)
+####3.	FileNotFoundException
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_5.png?raw=true)
+####4.	FormatException
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_6.png?raw=true)
+
 
 ###เรื่องของ exception นี้ศึกษาเพิ่มเติมได้ [ที่นี่](http://msdn.microsoft.com/en-us/library/vstudio/2w8f0bss%28v=vs.100%29.aspx)
 
@@ -307,6 +373,10 @@ execute next line
 2.	ถ้าค่าที่ผู้ใช้ป้อน น้อยกว่า ค่าที่สุ่มมาได้ ให้พิมพ์ ```“Too Low, You loss!!”```ออกทางหน้าจอ
 3.	ถ้าค่าที่ผู้ใช้ป้อน เท่ากับ ค่าที่สุ่มมาได้ ให้พิมพ์ ```“Okay, You win!!”``` ออกทางหน้าจอ
 
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_7.png?raw=true)
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_8.png?raw=true)
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_9.png?raw=true)
+
 ###1.2.2.	คำสั่ง ```if…else```
 
 เงื่อนไขที่เป็นไปได้ของคำสั่งในการตัดสินใจมีสองทางเสมอ (true และ false) ที่ผ่านมา เราจะเห็นว่า คำสั่ง if เป็นคำสั่งที่เลือกทำเพียงทางเดียว (เฉพาะในกรณีที่เงื่อนไขเป็น true เท่านั้น) หากต้องการให้โปรแกรมทำงานทั้งกรณีที่เงื่อนไขเป็น true และ false เราต้องใช้คำสั่ง if…else โดยมีรูปแบบดังนี้
@@ -354,6 +424,9 @@ this line is always execute
 ให้เขียนโปรแกรมสุ่มตัวเลข (จากใบงานที่ 7) แล้วใช้คำสั่ง ```if…else``` โดยมีเงื่อนไขต่อไปนี้
 
 1. ถ้าค่าที่ผู้ใช้ป้อน เท่ากับ ค่าที่สุ่มมาได้ ให้พิมพ์ ```“Hooray, You win!!”``` ออกทางหน้าจอ มิฉะนั้นให้พิมพ์คำว่า ```“Sorry, You loss!!”```
+
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_10.png?raw=true)
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_11.png?raw=true)
 
 ###1.2.3.	คำสั่ง ```if``` ซ้อนกัน (nested if)
 คำสั่ง ```if``` สามารถเขียนซ้อนกันเป็นชั้นได้ เรียกว่า nested if มีรูปแบบดังนี้
@@ -447,6 +520,9 @@ Grade C
 
 3. รูปแบบการพิมพ์คือ score: [sss] grade: [gg] เมื่อ sss คือคะแนน และ gg คือ เกรดที่ได้
 
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_12.png?raw=true)
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_13.png?raw=true)
+
 ###1.2.5. คำสั่ง ```switch```
 
 ในกรณีที่มีทางเลือกในการตัดสินใจเป็นจำนวนมาก ไม่เป็นการสะดวกที่จะเขียนเป็นโปรแกรมยาวๆ เช่นในกรณีของคำสั่ง if…else…if ภาษา C# มีคำสั่งตัดสินใจเลือกทิศทางของโปรแกรมแบบหลายทางเลือกให้ใช้คือคำสั่ง switch ซึ่งรูปแบบการใช้งาน ดังนี้
@@ -524,6 +600,7 @@ fri|	Friday	|Blue
 sat|	Saturday	|Purple
 อื่นๆ|	 ---|	---
 
+![](https://github.com/Mustted/LAB-08/blob/master/LAB8_14.png?raw=true)
 
 ##Reference
 เนื้อหาในส่วนนี้เป็นอ้างอิงสำหรับการเขียนโปรแกรม
@@ -543,13 +620,4 @@ FormatException|A value is not in an appropriate format to be converted from a s
 IndexOutOfRangeException|An index is outside the bounds of an array or collection. 
 InvalidOperationException|A method call is invalid in an object's current state. 
 KeyNotFoundException|The specified key for accessing a member in a collection cannot be found. 
-NotImplementedException|A method or operation is not implemented. 
-NotSupportedException|A method or operation is not supported. 
-ObjectDisposedException|An operation is performed on an object that has been disposed. 
-OverflowException|An arithmetic, casting, or conversion operation results in an overflow. 
-PathTooLongException|A path or file name exceeds the maximum system-defined length. 
-PlatformNotSupportedException|The operation is not supported on the current platform. 
-RankException|An array with the wrong number of dimensions is passed to a method. 
-TimeoutException|The time interval allotted to an operation has expired. 
-UriFormatException|An invalid Uniform Resource Identifier (URI) is used. 
-
+NotImplementedException|A method 
